@@ -34,3 +34,10 @@ data.forEach((x) => {
 })
 index = repoWithStargathers.indexOf(Math.max(...repoWithStargathers))
 console.log(`${data[index].full_name} is the repo with largest number of stargathers`)
+
+// 6. Return the names of the repos that have a description that is not null.
+let reposWithDescription = data.filter(function(repo){
+  repo.description !== null;
+});
+
+console.log(reposWithDescription);
