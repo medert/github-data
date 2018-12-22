@@ -36,8 +36,24 @@ index = repoWithStargathers.indexOf(Math.max(...repoWithStargathers))
 console.log(`${data[index].full_name} is the repo with largest number of stargathers`)
 
 // 6. Return the names of the repos that have a description that is not null.
-let reposWithDescription = data.filter(function(repo){
-  repo.description !== null;
+let reposWithDescription = data.map((repo) => {
+  if (repo.description !== null){
+    return repo.full_name
+  } else {
+    return false
+  }
 });
 
+reposWithDescription = reposWithDescription.filter((name) => {
+  return name !== false
+})
 console.log(reposWithDescription);
+
+//8. Use the `.map` function to create an array of repository descriptions. The result of the `.map` function should be an array of strings that look like this:
+reposWithDescription = data.map((repo) => {
+  if (repo.description !== null){
+    return repo.full_name
+  } else {
+    return false
+  }
+});
