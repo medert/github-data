@@ -18,6 +18,14 @@ console.log()
 
 // 3. What is the most recently created repository?
 
+let repId = []
+data.forEach((x) => {
+  repId.push(x.id)
+})
+index = repId.indexOf(Math.max(...repId))
+
+console.log(`${data[index].name} is the repository with the most recently created repo!`)
+console.log()
 
 // 4. How many repos have `0` stargazers?
 let reposWithNoStargazers = 0
