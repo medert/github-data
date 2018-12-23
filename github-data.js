@@ -3,7 +3,8 @@ let data = require('./data')
 
 // 1. How many repositories does LaunchAcademy own?
 
-console.log(`Launch Academy owns ${data.length} repositories.`)
+console.log(`Launch Academy owns ${data.length} repositories.\n`);
+console.log();
 
 // 2. Which repository has the largest size?
 
@@ -13,6 +14,8 @@ data.forEach((x) => {
 })
 let index = repSize.indexOf(Math.max(...repSize))
 console.log(`${data[index].full_name} is the repository with the largest size of ${Math.max(...repSize)} bytes!`)
+console.log()
+
 // 3. What is the most recently created repository?
 
 
@@ -25,7 +28,7 @@ data.forEach((x) => {
 })
 
 console.log(`There are ${reposWithNoStargazers} repos that have 0 stargazers!`)
-
+console.log()
 // 5. Which repo has the largest number of stargazers?
 
 let repoWithStargathers = []
@@ -34,6 +37,7 @@ data.forEach((x) => {
 })
 index = repoWithStargathers.indexOf(Math.max(...repoWithStargathers))
 console.log(`${data[index].full_name} is the repo with largest number of stargathers`)
+console.log()
 
 // 6. Return the names of the repos that have a description that is not null.
 let reposWithDescription = data.map((repo) => {
@@ -47,7 +51,9 @@ let reposWithDescription = data.map((repo) => {
 reposWithDescription = reposWithDescription.filter((name) => {
   return name !== false
 })
+console.log('Below are the repos with written descriptions: ')
 console.log(reposWithDescription);
+console.log()
 
 //8. Use the `.map` function to create an array of repository descriptions.
 // The result of the `.map` function should be an array of strings that look like this:
@@ -68,26 +74,40 @@ reposWithDescription = data.map((repo) => {
 });
 
 console.log(reposWithDescription);
+console.log()
 
-
+// Helper function that finds an object by name of the repo
+function findObjectByName(name){
+  let obj = data.find(function(element){
+    return element.name === name;
+  })
+  return obj;
+}
 // 10. What 2 keys are inside `monkey_party`'s license object?
 
-function whatAreTheKeys(repo){
-  let obj = data.find(function(element){
-    return element.name === repo;
-  })
+function whatAreTheKeys(name){
+  let obj = findObjectByName(name);
   return Object.keys(obj.license);
 }
 
-console.log(whatAreTheKeys('monkey_party'));
+console.log(`The keys for 'monkey_party' license are ${whatAreTheKeys('monkey_party')}`);
+console.log()
 
 // 11. What is `monkey_party`'s license url?
 
-function repoLicenseUrl(repo){
-  let obj = data.find(function(element){
-    return element.name === repo;
-  })
+function repoLicenseUrl(name){
+  let obj = findObjectByName(name);
   return obj.license.url;
+};
+
+console.log(`The url for 'monkey_party' license is ${repoLicenseUrl('monkey_party')}`);
+console.log()
+// 12. What's the current state of the booster repo's owner permissions object?
+
+function repoCurrentStatePerm(name){
+  let obj = findObjectByName(name);
+  return obj.owner.permissions.admin;
 }
 
-console.log(repoLicenseUrl('monkey_party'));
+console.log(`The current state of booster's repo's owner permissions object is ${repoCurrentStatePerm('booster')}`)
+console.log()
