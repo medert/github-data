@@ -80,3 +80,14 @@ function whatAreTheKeys(repo){
 }
 
 console.log(whatAreTheKeys('monkey_party'));
+
+// 11. What is `monkey_party`'s license url?
+
+function repoLicenseUrl(repo){
+  let obj = data.find(function(element){
+    return element.name === repo;
+  })
+  return obj.license.url;
+}
+
+console.log(repoLicenseUrl('monkey_party'));
