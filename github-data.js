@@ -49,11 +49,25 @@ reposWithDescription = reposWithDescription.filter((name) => {
 })
 console.log(reposWithDescription);
 
-//8. Use the `.map` function to create an array of repository descriptions. The result of the `.map` function should be an array of strings that look like this:
+//8. Use the `.map` function to create an array of repository descriptions.
+// The result of the `.map` function should be an array of strings that look like this:
 reposWithDescription = data.map((repo) => {
   if (repo.description !== null){
-    return repo.full_name
+    return repo.name
   } else {
     return false
   }
 });
+
+// 9. Use `.map` once again to create a summary of each repository's most important information.
+// We want to know the name of the repository, who created it (the owner), and how many watchers
+//there are. The resultant array should once again be an array of strings that look like this:
+
+reposWithDescription = data.map((repo) => {
+  return `Repo name is ${repo.name}, ${repo.watchers_count} watchers, owner is ${repo.owner}`
+});
+
+console.log(reposWithDescription);
+
+
+// 10. What 2 keys are inside `monkey_party`'s license object?
