@@ -71,3 +71,12 @@ console.log(reposWithDescription);
 
 
 // 10. What 2 keys are inside `monkey_party`'s license object?
+
+function whatAreTheKeys(repo){
+  let obj = data.find(function(element){
+    return element.name === repo;
+  })
+  return Object.keys(obj.license);
+}
+
+console.log(whatAreTheKeys('monkey_party'));
